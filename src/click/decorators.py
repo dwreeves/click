@@ -23,9 +23,10 @@ R = t.TypeVar("R")
 T = t.TypeVar("T")
 _AnyCallable = t.Callable[..., t.Any]
 FC = t.TypeVar("FC", bound="_AnyCallable | Command")
+C = t.TypeVar("C", bound=Context)
 
 
-def pass_context(f: t.Callable[te.Concatenate[Context, P], R]) -> t.Callable[P, R]:
+def pass_context(f: t.Callable[te.Concatenate[C, P], R]) -> t.Callable[P, R]:
     """Marks a callback as wanting to receive the current context
     object as first argument.
     """
